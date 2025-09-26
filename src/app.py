@@ -41,20 +41,28 @@ def _load_items() -> List[Item]:
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             raw = json.load(f)
             return [Item(**it) for it in raw]
-    # seed some data on first run
-    return [
-        Item(id=1, name="Alice",   location="Bangalore", role="Developer"),
-        Item(id=2, name="Bob",     location="Chennai",   role="Designer"),
-        Item(id=3, name="Charlie", location="Hyderabad", role="Manager"),
-        Item(id=4, name="John",    location="Delhi",     role="Assi Manager"),
-    ]
+    # return empty if no file
+    return []
 
 def _save_items(items: List[Item]) -> None:
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump([it.dict() for it in items], f, indent=2, ensure_ascii=False)
 
+# --- Load initial items ---
 items: List[Item] = _load_items()
 _next_id = max([it.id for it in items], default=0) + 1
+
+# --- Generate dummy data up to 10000 ---
+while len(items) < 10000:
+    items.append(
+        Item(
+            id=_next_id,
+            name=f"User{_next_id}",
+            location=["Bangalore", "Chennai", "Hyderabad", "Delhi", "Pune", "Mumbai"][_next_id % 6],
+            role=["Developer", "Designer", "Manager", "Tester", "Lead", "Analyst"][_next_id % 6],
+        )
+    )
+    _next_id += 1
 
 # --- Endpoints ---
 @app.get("/")

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Alice",
+    "location": "Bangalore",
+    "role": "Developer"
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "location": "Chennai",
+    "role": "Designer"
+  },
+  {
+    "id": 3,
+    "name": "Charlie",
+    "location": "Hyderabad",
+    "role": "Manager"
+  },
+  {
+    "id": 4,
+    "name": "John",
+    "location": "Delhi",
+    "role": "Assi Manager"
+  },
+  {
+    "id": 5,
+    "name": "Thilak",
+    "location": "Chennai",
+    "role": "Developer"
+  },
+  {
+    "id": 6,
+    "name": "John",
+    "location": "Chennai",
+    "role": "Developer"
+  }
+]
